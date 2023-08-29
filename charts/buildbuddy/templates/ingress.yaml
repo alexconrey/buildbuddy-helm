@@ -23,6 +23,9 @@ metadata:
     {{- with .Values.ingress.annotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
+    {{- with .Values.ingress.grpc.annotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
 spec:
   rules:
   - host: {{ .Values.ingress.grpcHost }}
@@ -60,6 +63,9 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     {{- end }}
     {{- with .Values.ingress.annotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
+    {{- with .Values.ingress.http.annotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
 spec:
